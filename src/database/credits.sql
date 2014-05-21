@@ -21,3 +21,21 @@ CREATE TABLE `user_account_balance` (
   `amount` decimal(15,2) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `withdrawal_request`
+--
+
+DROP TABLE IF EXISTS `withdrawal_request`;
+CREATE TABLE `withdrawal_request` (
+  `withdraw_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL,
+  `currency` varchar(10) NOT NULL,
+  `amount` decimal(15,2) NOT NULL,
+  `added_date` datetime NOT NULL,
+  `status` enum('Pending','Rejected','Paid') NOT NULL DEFAULT 'Pending',
+  PRIMARY KEY (`withdraw_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
